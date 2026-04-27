@@ -1,0 +1,154 @@
+
+week 1
+id = int(input("Enter ID: "))
+name = input("Enter Name: ")
+age = int(input("Enter Age: "))
+disease = input("Enter Disease: ")
+
+print("\nPatient Record:")
+print(id, name, age, disease)
+week 2
+patients = []
+
+n = int(input("Enter number of patients: "))
+
+for _ in range(n):
+    id = int(input("ID: "))
+    name = input("Name: ")
+    age = int(input("Age: "))
+    disease = input("Disease: ")
+
+    patients.append([id, name, age, disease])
+
+print(patients)
+week 3
+for p in patients:
+    print("ID:", p[0], "Name:", p[1], "Age:", p[2], "Disease:", p[3])
+week 4
+key = int(input("Enter ID to search: "))
+found = False
+
+for p in patients:
+    if p[0] == key:
+        print("Found:", p)
+        found = True
+
+if not found:
+    print("Not Found")
+week 5
+key = int(input("Enter ID to update: "))
+
+for p in patients:
+    if p[0] == key:
+        p[3] = input("Enter new disease: ")
+        print("Updated:", p)
+ week 6
+ key = int(input("Enter ID to delete: "))
+
+for p in patients:
+    if p[0] == key:
+        patients.remove(p)
+        print("Deleted")
+        break
+week 7
+patients = []
+
+while True:
+    print("\n1.Add 2.Display 3.Search 4.Delete 5.Exit")
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        id = int(input("ID: "))
+        name = input("Name: ")
+        age = int(input("Age: "))
+        disease = input("Disease: ")
+        patients.append([id, name, age, disease])
+
+    elif ch == 2:
+        for p in patients:
+            print(p)
+
+    elif ch == 3:
+        key = int(input("Enter ID: "))
+        for p in patients:
+            if p[0] == key:
+                print(p)
+
+    elif ch == 4:
+        key = int(input("Enter ID: "))
+        for p in patients:
+            if p[0] == key:
+                patients.remove(p)
+
+    elif ch == 5:
+        break
+ week 8
+ with open("patients.txt", "w") as f:
+    for p in patients:
+        f.write(f"{p[0]} {p[1]} {p[2]} {p[3]}\n")
+ week 9
+ patients = []
+
+with open("patients.txt", "r") as f:
+    for line in f:
+        data = line.strip().split()
+        patients.append([int(data[0]), data[1], int(data[2]), data[3]])
+ week 10
+ patients = []
+
+patient = {
+    "id": 1,
+    "name": "Ram",
+    "age": 25,
+    "disease": "Fever"
+}
+
+patients.append(patient)
+week 11
+patients.sort(key=lambda x: x["id"])
+
+for p in patients:
+    print(p)
+week 12
+patients = []
+
+def add():
+    p = {
+        "id": int(input("ID: ")),
+        "name": input("Name: "),
+        "age": int(input("Age: ")),
+        "disease": input("Disease: ")
+    }
+    patients.append(p)
+
+def display():
+    for p in patients:
+        print(p)
+
+def search():
+    key = int(input("Enter ID: "))
+    for p in patients:
+        if p["id"] == key:
+            print(p)
+
+def delete():
+    key = int(input("Enter ID: "))
+    for p in patients:
+        if p["id"] == key:
+            patients.remove(p)
+
+while True:
+    print("\n1.Add\n2.Display\n3.Search\n4.Delete\n5.Exit")
+    ch = int(input("Choice: "))
+
+    if ch == 1:
+        add()
+    elif ch == 2:
+        display()
+    elif ch == 3:
+        search()
+    elif ch == 4:
+        delete()
+    elif ch == 5:
+        break
+
